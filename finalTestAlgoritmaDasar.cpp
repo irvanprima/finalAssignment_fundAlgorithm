@@ -16,6 +16,7 @@ void clearScreen() {
 int main(int argc, char const *argv[])
 {
     char pilihan;
+    char beliUmpan;
     char lanjutMancing;
     char inputChar;
     string nama;
@@ -24,7 +25,7 @@ int main(int argc, char const *argv[])
     // char spinner[] = {'/', '-', '\\', '|'}; // Pola animasi
     const char* spinner[] = {".    ", "..   ", "...  ", " o   ", " O   ", "  o  ", "   o ", "    ."};
     int spinnerSize = sizeof(spinner) / sizeof(spinner[0]);
-    int Gold = 0;
+    int Gold = 10;
 
     string ikanCommon [5] = {"Ikan Cupang", "Ikan Lele", "Ikan Bawal", "Ikan Bandeng", "Ikan Teri"};
     string ikanRare [4] = {"Ikan Salmon", "Ikan Kerapu", "Ikan Kakap", "Ikan Arwana"};
@@ -36,22 +37,36 @@ int main(int argc, char const *argv[])
     int jumlahIkanSuperRare = 0;
     int jumlahIkanLegendary = 0;
 
-    int umpan = 7;
+    int umpan = 5;
 
     clearScreen();
     system("cls");
     cout << "1. Start New Game" << endl;
     cout << "2. Continue Game" << endl;
-    cout << "ketik '1'atau '2', lalu tekan enter" << endl;
+    cout << "ketik '1'atau '2', lalu tekan enter\n" << endl;
 
-    cin >> pilihan;
-    if (pilihan == '1' || pilihan == '1.')
+    // cin >> pilihan;
+    while (true)
     {
-        cout << "oke bang, lanjut\n" << endl;
+        cin >> pilihan;
+        if (pilihan == '1' || pilihan == '1.')
+        {
+            cout << "oke bang, lanjut\n" << endl;
+            system("pause");
+            break;
 
-    }else{
-        cout << "\nmaaf bang fitur ini belum ada" << endl;
-        system("pause");
+        }else if (pilihan == '2' || pilihan == '2.')
+        {
+            cout << "\nmaaf bang fitur ini belum ada" << endl;
+            system("pause");
+            break;
+        }
+        else{
+            cout << "\nmasukan angka pilihan '1' atau '2', lanjut tekan 'enter'" << endl;
+            // system("pause");
+            cin.ignore(); 
+            cin.get();
+        }
     }
 
     //jika masuk ke new game
@@ -68,7 +83,7 @@ int main(int argc, char const *argv[])
     clearScreen(); 
     system("cls");
 
-    cout << "Oke bang "<< nama << ", lanjut"  << endl;
+    cout << "Oke bang "<< nama << ", lanjut\n"  << endl;
     system("pause");
     while (true)
     {
@@ -77,107 +92,151 @@ int main(int argc, char const *argv[])
         cout << "MAIN MENU"<< endl;
         cout << "===============================" << endl;
 
-        cout << "1. Nama kamu = " << nama << endl;
-        cout << "2. Gold = " << Gold << endl;
-        cout << "3. jumlah umpan kamu = " << umpan << endl;
+        cout << "Nama kamu = " << nama << endl;
+        cout << "Gold = " << Gold << endl;
+        cout << "jumlah umpan kamu = " << umpan << endl;
 
-        cout << "\n4. Jumlah ikan common = " << jumlahIkanCommon << endl;
-        cout << "5. Jumlah ikan Rare = " << jumlahIkanRare << endl;
-        cout << "6. Jumlah ikan Super Rare = " << jumlahIkanSuperRare << endl;
-        cout << "7. Jumlah ikan Legendary = " << jumlahIkanLegendary << endl;
+        cout << "\nJumlah ikan common = " << jumlahIkanCommon << endl;
+        cout << "Jumlah ikan Rare = " << jumlahIkanRare << endl;
+        cout << "Jumlah ikan Super Rare = " << jumlahIkanSuperRare << endl;
+        cout << "Jumlah ikan Legendary = " << jumlahIkanLegendary << endl;
 
-        cout << "\n8. Save" << endl;
-        cout << "9. quit\n" << endl;
+        cout << "===============================" << endl;
+        cout << "\n1. Mulai Mancing" << endl;
+        cout << "2. Beli umpan" << endl;
+        cout << "3. Save" << endl;
+        cout << "4. Quit\n" << endl;
 
-        cout << "ketik '8' untuk save. Ketik '9' untuk quit, lalu tekan enter" << endl;
+        cout << "Ketik '1' untuk mulai mancing.\nKetik '2' beli umpan.\nKetik '3' untuk save.\nKetik '4' untuk quit, lalu tekan enter\n" << endl;
+        //cout << "<< ";
 
         cin >> pilihan;
-        if (pilihan == '8' || pilihan == '8.'){
-            cout << "\nmaaf bang fitur ini belum ada" << endl;
+        if (pilihan == '2' || pilihan == '2.')
+        {
+            cout << "TOKO UMPAN" << endl;
+            cout << "================" << endl;
+            cout << "Umpan 5 buah = 10 Gold" << endl;
+            cout << "Umpan 10 buah = 18 Gold" << endl;
+            cout << "Umpan 20 buah = 35 Gold" << endl;
 
-        } else if(pilihan == '9' || pilihan == '9.'){
+            cin >> beliUmpan;
+            if (beliUmpan == '5')
+            {
+                cout << "oke bang kamu beli 5 buah umpan" << endl;
+                umpan += 5;
+                system("pause");
+                continue;
+            }
+            
+
+        }else if (pilihan == '3' || pilihan == '3.'){
+            cout << "\nmaaf bang fitur ini belum ada" << endl;
+            system("pause");
+
+        } else if(pilihan == '4' || pilihan == '4.'){
             cout << "\noke bang, bye bye" << endl;
             system("pause");
             return 0;
-        }
+        }else if (pilihan == '1' || pilihan == '1.')
+        {                        
+            if (umpan == 0){
+            cout << "\nUmpan kamu habis, silahkan beli umpan terlebih dahulu" << endl;
+            system("pause");
+            continue;
+            }
 
-        system("pause");
-        clearScreen();
-        system("cls");
-        do {           
-                clearScreen();
-                system("cls");     
-                cout << "Lempar umpan (tekan spasi)...\n";
+            // system("pause");
+            clearScreen();
+            system("cls");
+            do {           
+                    clearScreen();
+                    system("cls");     
 
-                // Tunggu sampai user menekan spasi
-                while (true) {
-                    inputChar = _getch(); // Baca satu karakter tanpa Enter
-                    if (inputChar == ' ') {
-                        break; // Keluar loop jika spasi ditekan
-                    } else {
-                        cout << "Harap tekan spasi untuk melanjutkan!\n";
+                    if (umpan == 0){
+                    cout << "Umpan kamu habis, silahkan beli umpan terlebih dahulu" << endl;
+                    system("pause");
+                    break;
                     }
-                }                
-                
-                for (int i = 0; i < 25; i++) { // 25 iterasi = 5 detik (200ms x 25)
-                cout << "\r" << spinner[i % spinnerSize] << std::flush;
-                this_thread::sleep_for(chrono::milliseconds(300));
-                }
 
-                cout << "\n\numpan anda di gigit !!! (tekan enter)...\n";
+                    cout << "Lempar umpan (tekan spasi)...\n";
 
-                // Tunggu sampai user menekan Enter
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-                cin.get();
-    
-                string* arrays[] = {ikanCommon, ikanRare, ikanSuperRare, ikanLegendary};
-                int ukuran[] = {5, 4, 3, 2}; // Ukuran masing-masing array                
-                srand(time(0));
+                    // Tunggu sampai user menekan spasi
+                    while (true) {
+                        inputChar = _getch(); // Baca satu karakter tanpa Enter
+                        if (inputChar == ' ') {
+                            break; // Keluar loop jika spasi ditekan
+                        }else {
+                            cout << "Harap tekan spasi untuk melanjutkan!\n";
+                        }
+                    }                
+                    
+                    for (int i = 0; i < 25; i++) { // 25 iterasi = 5 detik (200ms x 25)
+                    cout << "\r" << spinner[i % spinnerSize] << std::flush;
+                    this_thread::sleep_for(chrono::milliseconds(300));
+                    }
 
-                //acak jenis rarity
-                int acakJenisRarity = rand() % 4; 
-                //acak jenis ikan
-                int acakIkan = rand() % ukuran[acakJenisRarity]; 
-                string ikan = arrays[acakJenisRarity][acakIkan];
+                    cout << "\n\numpan anda di gigit !!! (tekan enter)...\n";
 
-                if (acakJenisRarity == 0) {
-                    jumlahIkanCommon++;
-                    Gold += 4;
-                    umpan--;
-                    cout << "Anda mendapatkan ikan Common!\n" << ikan;
-                    cout << ", Gold +4!\n\n";
-                    cout << "sisa umpan kamu = " << umpan << endl;
-                } else if (acakJenisRarity == 1) {
-                    jumlahIkanRare++;
-                    Gold += 7;
-                    umpan--;
-                    cout << "Anda mendapatkan ikan Rare!\n" << ikan;
-                    cout << ", Gold +7!\n\n";
-                    cout << "sisa umpan kamu = " << umpan << endl;
-                } else if (acakJenisRarity == 2) {
-                    jumlahIkanSuperRare++;
-                    Gold += 7;
-                    umpan--;
-                    cout << "Anda mendapatkan ikan Super Rare!\n" << ikan;
-                    cout << ", Gold +20!!\n\n";
-                    cout << "sisa umpan kamu = " << umpan << endl;
-                }else if (acakJenisRarity == 3) {
-                    jumlahIkanLegendary++;
-                    Gold += 100;
-                    umpan--;
-                    cout << "Anda mendapatkan ikan Legendary!\n" << ikan;
-                    cout << ", Gold +100!!!\n\n";
-                    cout << "sisa umpan kamu = " << umpan << endl;
-                }else{
-                    cout << "umpan anda dibawa lari ikan" << endl;
-                }
+                    // Tunggu sampai user menekan Enter
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    cin.get();
+        
+                    string* arrays[] = {ikanCommon, ikanRare, ikanSuperRare, ikanLegendary};
+                    int ukuran[] = {5, 4, 3, 2};                 
+                    srand(time(0));
 
-                cout << "\nMau mancing lagi? (y/n): ";
-                cin >> lanjutMancing;
+                    //acak jenis rarity
+                    int acakJenisRarity = rand() % 4; 
+                    //acak jenis ikan
+                    int acakIkan = rand() % ukuran[acakJenisRarity]; 
+                    string ikan = arrays[acakJenisRarity][acakIkan];
 
-            } while (lanjutMancing == 'y' || lanjutMancing == 'Y');
+                    int peluangStrike = rand() % 100;
+
+                    if (peluangStrike < 65) { // 65% Common
+                        int acakIkan = rand() % ukuran[0];
+                        string ikan = arrays[0][acakIkan];
+                        jumlahIkanCommon++;
+                        Gold += 4;
+                        umpan--;
+                        cout << "Anda mendapatkan ikan Common!\n" << ikan;
+                        cout << ", Gold +4!\n\n";
+                    } else if (peluangStrike < 75) { // 10% Rare
+                        int acakIkan = rand() % ukuran[1];
+                        string ikan = arrays[1][acakIkan];
+                        jumlahIkanRare++;
+                        Gold += 7;
+                        umpan--;
+                        cout << "Anda mendapatkan ikan Rare!\n" << ikan;
+                        cout << ", Gold +7!\n\n";
+                    } else if (peluangStrike < 79) { // 4% Super Rare
+                        int acakIkan = rand() % ukuran[2];
+                        string ikan = arrays[2][acakIkan];
+                        jumlahIkanSuperRare++;
+                        Gold += 20;
+                        umpan--;
+                        cout << "Anda mendapatkan ikan Super Rare!\n" << ikan;
+                        cout << ", Gold +20!!\n\n";
+                    } else if (peluangStrike < 80) { // 1% Legendary
+                        int acakIkan = rand() % ukuran[3];
+                        string ikan = arrays[3][acakIkan];
+                        jumlahIkanLegendary++;
+                        Gold += 100;
+                        umpan--;
+                        cout << "Anda mendapatkan ikan Legendary!\n" << ikan;
+                        cout << ", Gold +100!!!\n\n";
+                    } else { // 20% Umpan dibawa lari
+                        umpan--;
+                        cout << "Umpan Anda dibawa lari ikan!\n\n";
+                    }
+
+                    cout << "\nMau mancing lagi? (y/n): ";
+                    cin >> lanjutMancing;
+
+                } while (lanjutMancing == 'y' || lanjutMancing == 'Y');
+        }
     }
-    
+        
     system("pause");
     return 0;
 }
